@@ -1,32 +1,69 @@
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
+#include <iostream>
 
-int MiniMax(std::vector<int>* pBf, int* scores, int size)
+void MiniMax(std::vector<int>* pBf, int* scores, int size)
 {
-	int bfSize = pBf->size;
-	for(std::vector<int>::iterator it = pBf->begin();
-		it != pBf->end();
-		++it)
+
+}
+
+template<typename T>
+void PrintArray(const char* name, std::vector<T>* pArr)
+{
+	for(unsigned int i = 0; i < pArr->size(); ++i)
 	{
-		pBf
+		if(i == 0)
+			std::cout << name << " = {";
+		std::cout << (*pArr)[i];
+		if(i != pArr->size() - 1)
+			std::cout << ", ";	
+		else
+			std::cout << "}" << std::endl;
 	}
+}	
+
+void InitializeArrays()
+{
+	std::vector<unsigned int> bfs;
+	std::vector<unsigned int> nodeqty;
+	std::vector<int> vals;
+	
+	unsigned int bfmin = 2, bfmax = 4;
+	unsigned int depth = 3, bfsum = 0;
+	for(unsigned int i = 1; i <= depth; ++i)
+	{
+		if(nodeqty.empty())
+			nodeqty.push_back(1);
+		else
+		{
+			nodeqty.push_back(bfsum);
+			bfsum = 0;
+		}
+
+		for(unsigned int j = 1; j <= nodeqty.back(); ++j)
+		{
+			bfs.push_back((rand() % (bfmax - bfmin + 1)) + bfmin);
+			bfsum += bfs.back();
+		}
+	}
+	nodeqty.push_back(bfsum);
+	
+	unsigned int vmin = -10, vmax = 10;
+	for(unsigned int i = 1; i <= nodeqty.back(); ++i)
+		vals.push_back((rand() % (vmax - vmin + 1)) + vmin);
+	
+	PrintArray<unsigned int>("bfs", &bfs);
+	PrintArray<unsigned int>("nodeqty", &nodeqty);
+	PrintArray<int>("vals", &vals);
 }
 
 int main(void)
 {
-	//Container for storing branching factors for the trees.
-	std::vector<int> bf = {3,
-						   //3 branches in ply 1.
-						   2, 3, 5,
-						   //2 branches in the leftmost branch from ply 2.
-						   1, 2
-						   //3 branches in the center branch from ply 2.
-						   2, 3, 3,
-						   //5 branches in the rightmost branch from ply 2.
-						   1, 3, 3, 2, 4};
-	//(1 + 2) + (2 + 3 + 3) + (1 + 3 + 3 + 2 + 4) = 3 + 8 + 13 = 24
-	int scores[24] = {1, 3, 4, 
-					  5, 2, 7, 8, 9, 13, 2, 3, 
-					  4, 5, 6, 7, 8, 2, 3, 8, 2, 4, 5, 2, 7};
+	//Initialize random seed.
+	srand(time(NULL));
+	
+	InitializeArrays();
 	
 	return 0;
 }

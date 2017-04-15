@@ -1,0 +1,37 @@
+Proof that maximin can at most be minimax.
+
+You're given a following 3x3 payoff matrix.
+
+  1 2 3
+1 a b c
+2 d e f
+3 g h i
+
+If one tried to find the row player's maximin,
+it would be same as figuring out the biggest, from the smallest of each of the rows, 
+which I would like to call as SoR, stands for 'the Smallest of the Row' from now on in this article.
+
+If one tried to find the row player's minimax,
+it would be same as figuring out the smallest, from the biggest of each of the columns,
+which I would like to call as BoC, stands for 'the Biggest of the Column' from now on in this article.
+
+Say an entry 'a' is considered to be the SoR1, and BoC1 at the same time.
+We can surely tell that 'b' and 'c' are bigger than or equal to 'a', since 'a' should be SoR1.
+Likewise, 'd' and 'g' are smaller than or equal to 'a', since 'a' should be BoC1.
+
+  1      2      3 
+1 a      b(>=a) c(>=a)
+2 d(<=a) e      f
+3 g(<=a) h      i
+
+SoR1 is 'a'.
+SoR2 is at most d, which is smaller than or equal to 'a'.
+SoR3 is at most g, which is smaller than or equal to 'a'.
+Maximin is at most 'a'.
+
+BoC1 is 'a'.
+BoC2 is at least b, which is bigger than or equal to 'a'.
+BoC3 is at least c, which is bigger than or equal to 'a'.
+Minimax is at least 'a'.
+
+

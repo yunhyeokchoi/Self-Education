@@ -8,16 +8,46 @@ class KatoEngine
 {
 	public:
 		KatoEngine(const char* title,
-					  unsigned int scrwidth, unsigned int scrheight)
-			: pm_scrwidth(scrwidth), pm_scrheight(scrheight),
-			  pm_title(title), pm_isquit(false)
+							 unsigned int scrwidth, unsigned int scrheight)
+			: pm_scrwidth(scrwidth), pm_scrheight(scrheight), pm_title(title), 
+				pm_psdlwin(0), pm_psurf(0), pm_isquit(false)
 		{
-			SDLInit();
+			Initialize();
 		}
 
 		void Update()
 		{
 			SDL_Event eventhnd; //an event handler
+
+#if defined(_DEBUG)
+{
+			printf("Following Timer::Show should be 0.\n");
+			pm_timer.Show();
+			pm_timer.Start();
+
+			printf("Following Timer::Show should be {elapsed_tick + (current_tick - init_tick)}.\n");
+			pm_timer.Show();
+
+			printf("Timer::Pause should be called once.\n");
+			pm_timer.Pause();
+			pm_timer.Pause();
+			pm_timer.Pause();
+
+			printf("Following Timer::Show should be (elapsed_tick).\n");
+			pm_timer.Show();
+			pm_timer.Stop();
+			pm_timer.Start();
+			pm_timer.Pause();
+
+			printf("Timer::Unpause should be called once.\n");
+			pm_timer.Unpause();
+			pm_timer.Unpause();
+			pm_timer.Unpause();
+
+			printf("Following Timer::Show should be {elapsed_tick + (current_tick - init_tick)}.\n");
+			pm_timer.Show();
+}
+#endif
 
 			while (!pm_isquit)
 			{
@@ -61,17 +91,131 @@ class KatoEngine
 							}
 						}
 					}
-					
+					//PhysicsUpdate(1.f);
 				}
 			}
 
 			this->Quit();
 		}
 
-		~KatoEngine() {};
-
 	private:
-		void SDLInit()
+		class Timer
+		{
+			public:
+				/*
+					Start and timer starts counting from 0.
+					Pressing Start at any situation should do one thing; Start.
+				*/
+				void Start()
+				{
+					//Initialize the Timer to clean slate.
+					Stop();
+
+					pm_isstarted = true;
+
+					//Setting up the initial tick, so that we can take out
+					//what it's storing after the Timer's been paused.
+					pm_itick = SDL_GetTicks();
+
+					printf("Timer::Start();\n");
+				}
+
+				/*
+					Stops and it resets the number to 0.
+					Do one thing no matter what; Stop.
+				*/
+				void Stop()
+				{
+					pm_isstarted = false;
+					pm_ispause = false;
+					pm_itick = 0;
+					pm_etick = 0;
+
+					printf("Timer::Stop();\n");
+				}
+
+				/*
+					Pause the timer and the number stops being incremented.
+					Do nothing when Timer is not started.
+					Stop counting up the Timer when it has been started in the past.
+				*/
+				void Pause()
+				{
+					if (pm_isstarted &&
+							//It disables client prompting Pause multiple times,
+							//when Timer is paused.
+							!pm_ispause)
+					{
+						pm_ispause = true;
+						//pm_etick is accumulated as the number of calls to Pause increases.
+						pm_etick += SDL_GetTicks() - pm_itick;
+
+						printf("Timer::Pause();\n");
+					}
+				}
+
+				/*
+					Show the Timer.
+					Show 0 when Timer is not started.
+					Show GetTick() - initialtick when it's not paused.
+					Show elapsedtick when it's paused.
+				*/
+				Uint32 Show()
+				{
+					if (pm_isstarted)
+					{
+						if (pm_ispause)
+						{
+							printf("Timer::Show() : (elapsed_tick)\n");
+							return pm_etick;
+						}
+						else
+						{
+							printf("Timer::Show() : {elapsed_tick + (current_tick - init_tick)}\n");
+							return pm_etick + SDL_GetTicks() - pm_itick;
+						}
+					}
+
+					printf("Timer::Show() : 0\n");
+					return 0;
+				}
+
+				/*
+					Unpause the timer and number starts being incremented again.
+					Do nothing when Timer is not started.
+					Start counting the Timer again.
+				*/
+				void Unpause()
+				{
+					if (pm_isstarted && 
+							//It disables client prompting Unpause multiple times,
+							//when Timer is paused.
+							pm_ispause)
+					{
+						pm_ispause = false;
+						pm_itick = SDL_GetTicks();
+
+						printf("Timer::Unpause();\n");
+					}
+				}
+			
+			private:
+				friend KatoEngine::KatoEngine(const char* title, unsigned int scrwidth, unsigned int scrheight);
+				Timer()
+					: pm_ispause(false), pm_isstarted(false)
+				{
+
+				}
+
+				bool pm_ispause;
+				bool pm_isstarted;
+				//Initial tick.
+				Uint32 pm_itick;
+				//Ticks elapsed 
+				Uint32 pm_etick;
+		};
+
+		void Initialize()
 		{
 			if (SDL_Init(//SDL's video subsystem
 							 SDL_INIT_VIDEO) < 0)
@@ -100,6 +244,11 @@ class KatoEngine
 			}
 		}
 
+		void PhysicsUpdate(float/* dt*/)
+		{
+			
+		}
+
 		void Quit()
 		{
 			SDL_DestroyWindow(pm_psdlwin);
@@ -115,6 +264,7 @@ class KatoEngine
 
 		bool pm_isquit;
 		std::list<SDL_Surface*> pm_listpimage;
+		Timer pm_timer;
 };
 
 //Function signature for the main should be like this,

@@ -4,6 +4,8 @@
 //This is where all the pointers to image files will be stored.
 #include <list>
 
+//#define TIMER_TEST
+
 class KatoEngine
 {
 	public:
@@ -19,7 +21,7 @@ class KatoEngine
 		{
 			SDL_Event eventhnd; //an event handler
 
-#if defined(_DEBUG)
+#if defined(TIMER_TEST)
 {
 			printf("Following Timer::Show should be 0.\n");
 			pm_timer.Show();
@@ -49,8 +51,22 @@ class KatoEngine
 }
 #endif
 
+      //unsigned int countedFrames = 0;
+
+      //start_tick & end_tick
+      Uint32 stat = 0, endt;
+      float dt;
+
+      pm_timer.Start();
+
 			while (!pm_isquit)
 			{
+        //Average FPS = number_of_frames / (time_passed / 1000.f)
+        //float avgfps = countedFrames / (pm_timer.Show() / 1000.f);
+
+        //printf("AVERAGE FPS = %f\n", avgfps);
+        //printf("TIME / 1000.f = %f\n", (pm_timer.Show() / 1000.f));
+
 				//Till the event gets emptied out.
 				while (SDL_PollEvent(&eventhnd))
 				{
@@ -91,8 +107,40 @@ class KatoEngine
 							}
 						}
 					}
-					//PhysicsUpdate(1.f);
 				}
+
+        /*
+          while(1)
+          {
+            end = SDL_GetTicks();
+            dt = end - start;
+            start = end;
+            Function(dt);
+          }
+        */
+
+
+        for (int i = 0; i < 100000000; ++i)
+        {
+          long int x = i * i * i;
+          x = x  * x;
+        }
+
+        //What if timer's Uint32 value gets overflowed?
+        endt = pm_timer.Show();
+        //printf("endt - stat = %i\n", endt - stat);
+
+        dt = (endt - stat) / 1000.f;
+        stat = endt;
+
+        printf("dt = %f\n", dt);
+
+        //printf("%i\n", pm_timer.Show());
+
+        //Pretty much this is where the Render & PhysicsUpdate will be called.
+        //++countedFrames;
+
+        //PhysicsUpdate(1.f);
 			}
 
 			this->Quit();
@@ -166,17 +214,23 @@ class KatoEngine
 					{
 						if (pm_ispause)
 						{
+#if defined(TIMER_TEST)
 							printf("Timer::Show() : (elapsed_tick)\n");
+#endif
 							return pm_etick;
 						}
 						else
 						{
+#if defined(TIMER_TEST)
 							printf("Timer::Show() : {elapsed_tick + (current_tick - init_tick)}\n");
+#endif
 							return pm_etick + SDL_GetTicks() - pm_itick;
 						}
 					}
 
+#if defined(TIMER_TEST)
 					printf("Timer::Show() : 0\n");
+#endif
 					return 0;
 				}
 

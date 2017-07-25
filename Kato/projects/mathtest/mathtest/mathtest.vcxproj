@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B70F266C-DBAD-4F9A-A68B-23E218A56D57}</ProjectGuid>
+    <ProjectGuid>{98870276-3422-46E8-B2F4-E9332E9E1C10}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>demo</RootNamespace>
+    <RootNamespace>mathtest</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,35 +71,35 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\..\external\googletest\include\;$(ProjectDir)..\..\..\Kato_Sources\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(ProjectDir)..\..\..\external\googletest\lib\$(Configuration)_$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)..\Sources\;$(SourcePath)</SourcePath>
+    <OutDir>$(ProjectDir)..\..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\..\external\googletest\include\;$(ProjectDir)..\..\..\Kato_Sources\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(ProjectDir)..\..\..\external\googletest\lib\$(Configuration)_$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)..\Sources\;$(SourcePath)</SourcePath>
+    <OutDir>$(ProjectDir)..\..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\..\external\googletest\include\;$(ProjectDir)..\..\..\Kato_Sources\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\..\external\SampleEngine\lib\$(PlatformTarget)\;$(ProjectDir)..\..\..\external\googletest\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)..\Sources\;$(SourcePath)</SourcePath>
+    <OutDir>$(ProjectDir)..\..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\..\external\googletest\include\;$(ProjectDir)..\..\..\Kato_Sources\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\..\external\SampleEngine\lib\$(PlatformTarget)\;$(ProjectDir)..\..\..\external\googletest\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)..\Sources\;$(SourcePath)</SourcePath>
+    <OutDir>$(ProjectDir)..\..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -108,35 +108,28 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>googletest.lib;SampleEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86\SDL2.dll" "$(OutputPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>googletest.lib;SampleEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutputPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -147,54 +140,37 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>googletest.lib;SampleEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86\SDL2.dll" "$(OutputPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>googletest.lib;SampleEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutputPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Sources\main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Kato_Solution\SampleEngine\SampleEngine.vcxproj">
-      <Project>{455f993e-0a66-41fa-a082-2465cc2cc576}</Project>
-    </ProjectReference>
+    <ClCompile Include="..\Sources\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

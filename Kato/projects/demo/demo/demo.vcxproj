@@ -72,32 +72,32 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\Kato_Sources;$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\Kato\lib\x86;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\Kato_Sources;$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\Kato\lib\x64;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\Kato_Sources;$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\Kato\lib\x86;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\Kato_Sources;$(SolutionDir)..\..\external\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\Kato\lib\x64;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(SolutionName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>

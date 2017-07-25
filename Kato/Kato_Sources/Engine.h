@@ -16,7 +16,7 @@ class KatoEngine
 {
   public:
 	  KatoEngine(const char* title, unsigned int scrwidth, unsigned int scrheight);
-    ~KatoEngine();
+    ~KatoEngine() {};
     void Update();
 
   private:

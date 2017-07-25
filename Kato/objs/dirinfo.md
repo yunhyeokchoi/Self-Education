@@ -1,0 +1,1 @@
+This directory is where the obj files are stored before being linked.

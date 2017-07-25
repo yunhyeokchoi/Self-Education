@@ -1,0 +1,1 @@
+This directory is where project files which depend on Kato engine are stored.

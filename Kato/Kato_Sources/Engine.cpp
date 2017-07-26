@@ -1,8 +1,8 @@
-//Engine.h has <list> included.
+//Engine.h has <list>, <SDL.h> included.
 #include "Engine.h"
 //It includes <SDL.h>.
 #include "Timer.h"
-#include "Macro.h"
+//#include "Macro.h"
 
 namespace KatoEngine
 {
@@ -41,21 +41,9 @@ namespace KatoEngine
       //printf("AVERAGE FPS = %f\n", avgfps);
       //printf("TIME / 1000.f = %f\n", (pm_timer.Show() / 1000.f));
 
-      //Till the event gets emptied out.
-      while (SDL_PollEvent(&eventhnd))
-      {
-        /*
-          https://wiki.libsdl.org/SDL_EventType#Remarks
-          #1 An SDL_QUIT event is generated when the user clicks
-          on the close button of the last existing window.
-        */
-        if (eventhnd.type == SDL_QUIT)
-        {
-          pm_isquit = true;
-          //Stop assessing for the leftover msgs, and just break.
-          //break;
-        }
-      }
+      if (PollWindowEvent(eventhnd))
+        break;
+
 
       /*
         while(1)
@@ -80,7 +68,7 @@ namespace KatoEngine
       dt = (endt - stat) / 1000.f;
       stat = endt;
 
-      KATO_DEBUG_TEST(ENGINE_TEST, printf("dt = %f", dt));
+      //KATO_DEBUG_TEST(ENGINE_TEST, printf("dt = %f", dt));
 
       //printf("%i\n", pm_ptimer->Show());
 
@@ -91,6 +79,49 @@ namespace KatoEngine
     }
 
     this->Quit();
+  }
+
+  bool Engine::PollWindowEvent(SDL_Event& currEvent)
+  {
+    //Till the event gets emptied out.
+    while (SDL_PollEvent(&currEvent))
+    {
+      PollKeyboardEvent(currEvent);
+
+      /*
+        https://wiki.libsdl.org/SDL_EventType#Remarks
+        #1 An SDL_QUIT event is generated when the user clicks
+        on the close button of the last existing window.
+      */
+      if (currEvent.type == SDL_QUIT)
+      {
+        pm_isquit = true;
+        return true;
+        //Stop assessing for the leftover msgs, and just break.
+        //break;
+      }
+    }
+
+    return false;
+  }
+
+  void Engine::PollKeyboardEvent(SDL_Event& currEvent)
+  {
+    switch (currEvent.type)
+    {
+      case SDL_KEYDOWN :
+      {
+        printf("KEYDOWN\n");
+        //SetKeyPressed();
+        break;
+      }
+      case SDL_KEYUP :
+      {
+        printf("KEYUP\n");
+        //SetKeyPressed();
+        break;
+      }
+    }
   }
 
   void Engine::Initialize()

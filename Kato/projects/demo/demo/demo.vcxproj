@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
@@ -80,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
@@ -88,7 +88,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
@@ -96,7 +96,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>

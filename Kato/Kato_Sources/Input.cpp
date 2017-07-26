@@ -36,4 +36,34 @@ namespace KatoEngine
       s_pressed[key] = false;
     }
   }
+
+  bool Input::IsPressed(SDL_Scancode key)
+  {
+    return s_pressed[key];
+  }
+
+  bool Input::IsReleased(SDL_Scancode key)
+  {
+    return s_released[key];
+  }
+
+  bool Input::IsTriggered(SDL_Scancode key)
+  {
+    return s_triggered[key];
+  }
+
+  bool Input::IsAnyPressed()
+  {
+    return s_pressed.any();
+  }
+
+  bool Input::IsAnyTriggered()
+  {
+    return s_triggered.any();
+  }
+
+  bool Input::IsAnyReleased()
+  {
+    return s_released.any();
+  }
 }

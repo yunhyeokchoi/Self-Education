@@ -65,14 +65,9 @@ float Vector3::DistanceSquared(const Vector3& rhs) const
 
 Vector3& Vector3::Normalize()
 {
-  real len = Length();
+  Vector3 normv = GetNormalized(*this);
 
-  if (len != 0)
-  {
-    m_x *= 1 / len;
-    m_y *= 1 / len;
-    m_z *= 1 / len;
-  }
+  *this = normv;
 
   return *this;
 }

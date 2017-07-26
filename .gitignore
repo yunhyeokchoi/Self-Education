@@ -34,3 +34,5 @@ Kato/projects/googletest/googletest/googletest.vcxproj.user
 Kato/projects/googletest/googletest.VC.db
 Kato/External/SampleEngine/lib/Debug_x86/SampleEngine.pdb
 Kato/External/SampleEngine/lib/Debug_x64/SampleEngine.pdb
+Kato/External/SampleEngine/lib/
+Kato/External/googletest/lib/

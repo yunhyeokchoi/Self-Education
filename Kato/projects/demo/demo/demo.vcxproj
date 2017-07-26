@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
@@ -80,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
@@ -88,16 +88,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\Kato_Sources\;$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
@@ -114,7 +114,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86\SDL2.dll" "$(OutputPath)"</Command>

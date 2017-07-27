@@ -3,13 +3,18 @@
 //It includes <SDL.h>.
 #include "Timer.h"
 //#include "Macro.h"
+#include "DebugTools.h"
+
+#include <fstream> //file stream; open file
+#include <sstream> //string stream; file -> string
 
 namespace KatoEngine
 {
   Engine::Engine
-  (const char* title, unsigned int scrwidth, unsigned int scrheight)
+  (const char* title, unsigned int scrwidth, unsigned int scrheight, std::string strexepath)
     : pm_scrwidth(scrwidth), pm_scrheight(scrheight), pm_title(title),
-      pm_psdlwin(0), pm_psurf(0), pm_isquit(false), pm_ptimer(new Timer())
+      pm_psdlwin(0), pm_psurf(0), pm_isquit(false), pm_ptimer(new Timer()),
+      pm_strexepath(strexepath)
   {
     Initialize();
   }
@@ -18,6 +23,11 @@ namespace KatoEngine
   {
     if (pm_ptimer)
       delete pm_ptimer;
+
+    SDL_GL_DeleteContext(pm_hglContext);
+
+    glBindVertexArray(0);
+    glDeleteProgram(pm_hprogram);
   }
 
   void Engine::Update()
@@ -68,6 +78,17 @@ namespace KatoEngine
       dt = (endt - stat) / 1000.f;
       stat = endt;
 
+      glClear(GL_COLOR_BUFFER_BIT);
+
+      glUseProgram(pm_hprogram);
+
+      glBindVertexArray(pm_primitive);
+      glDrawArrays(GL_TRIANGLES, 1, 3);
+
+      glUseProgram(0);
+      glBindVertexArray(0);
+
+      SDL_GL_SwapWindow(pm_psdlwin);
       //KATO_DEBUG_TEST(ENGINE_TEST, printf("dt = %f", dt));
 
       //printf("%i\n", pm_ptimer->Show());
@@ -136,11 +157,94 @@ namespace KatoEngine
                                     SDL_WINDOWPOS_CENTERED,
                                     pm_scrwidth,
                                     pm_scrheight,
-                                    SDL_WINDOW_SHOWN);
+                                    SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
       if (!pm_psdlwin)
         printf("Failed to create Window; %s\n", SDL_GetError());
       else
       {
+        int att;
+
+        //Enable double buffer.
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+        //Chose not to use deprecated functions.
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+        pm_hglContext = SDL_GL_CreateContext(pm_psdlwin);
+        DEBUG_ASSERT(pm_hglContext != 0, "Failed to create context!");
+
+        SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &att);
+        printf("SDL_GL_CONTEXT_MAJOR_VERSION : %i\n", att);
+        SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &att);
+        printf("SDL_GL_CONTEXT_MINOR_VERSION : %i\n", att);
+
+        glewInit();
+
+        glClearColor(0.1f, 0.2f, 0.3f, 1.f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        SDL_GL_SwapWindow(pm_psdlwin);
+
+        //Creating shader program
+        pm_hprogram = glCreateProgram();
+        printf("%s\n", glewGetErrorString(glGetError()));
+
+        //Creating vertex shader
+        GLuint vertexshader = ReadShaderSource(GL_VERTEX_SHADER, "C:\\Users\\Student\\Desktop\\Repos\\Kato\\Kato_Sources\\vertexshader.vs");
+        GLuint fragmentshader = ReadShaderSource(GL_FRAGMENT_SHADER, "C:\\Users\\Student\\Desktop\\Repos\\Kato\\Kato_Sources\\fragmentshader.fs");
+        glAttachShader(pm_hprogram, vertexshader);
+        glAttachShader(pm_hprogram, fragmentshader);
+        glLinkProgram(pm_hprogram);
+
+        glDetachShader(pm_hprogram, vertexshader);
+        glDetachShader(pm_hprogram, fragmentshader);
+
+        glDeleteShader(vertexshader);
+        glDeleteShader(fragmentshader);
+
+        GLint iv;
+        //int loglen;
+        glGetProgramiv(pm_hprogram, GL_LINK_STATUS, &iv);
+        //glGetProgramiv(pm_hprogram, GL_INFO_LOG_LENGTH, &loglen);
+        if (iv != GL_TRUE)
+        {
+          DEBUG_ASSERT(iv == GL_TRUE, "Failed to link program.\n");
+        }
+
+        glGenVertexArrays(1, &pm_primitive);
+        glBindVertexArray(pm_primitive);
+
+        GLuint buffer;
+        //Vertices have to be written in clockwise direction.
+        GLfloat bufferData[] = { 0.0f, 0.0f, 0.0f,
+                                 0.0f, 0.5f, 0.0f,
+                                 0.5f, 0.0f, 0.0f,
+                                 0.0f, -0.5f, 0.0f,
+
+                                 1.f, 0.f, 0.f, 1.f,
+                                 0.f, 1.f, 0.f, 1.f, 
+                                 0.f, 0.f, 1.f, 1.f, 
+                                 1.f, 0.f, 0.f, 1.f };
+
+        //Create OpenGL buffer object.
+        glGenBuffers(1, &buffer);
+        //Bind the buffer object we generated to the GL_ARRAY_BUFFER target!
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        //Allocate memory for buffer data in GPU.
+        glBufferData(GL_ARRAY_BUFFER, sizeof(bufferData), &bufferData, 
+                     //GL_STATIC_DRAW let GPU know that bufferData we passed won't change.
+                     GL_STATIC_DRAW);
+
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, /*x, y, z*/ 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, /*r, g, b, a*/ 4, GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[12]));
+
+        glBindVertexArray(0);
+        glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
         //Get HDC for the window(?)
         pm_psurf = SDL_GetWindowSurface(pm_psdlwin);
         //perhaps format in the SDL_Surface struct has something to do with
@@ -157,5 +261,35 @@ namespace KatoEngine
   {
     SDL_DestroyWindow(pm_psdlwin);
     SDL_Quit();
+  }
+
+  GLuint Engine::ReadShaderSource(GLenum shadertype, const char* filename)
+  {
+    std::fstream file;
+    //file open
+    file.open(filename);
+    DEBUG_ASSERT(file.is_open(), "Opening shader failed: %s\n"/*, filename*/);
+
+    std::stringstream sstream;
+    //Insert file stream buffer into string stream.
+    sstream << file.rdbuf();
+
+    std::string source = sstream.str();
+    const char* sourcegl = source.c_str();
+    GLuint shader = glCreateShader(shadertype);
+    glShaderSource(shader, 1, &sourcegl, 0);
+
+    //Compiling shader.
+    glCompileShader(shader);
+
+    GLint iv;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &iv);
+
+    if (iv != GL_TRUE)
+      DEBUG_ASSERT(iv == GL_TRUE, "Failed to compile shader source. %s\n"/*, filename*/);
+
+    file.close();
+  
+    return shader;
   }
 }

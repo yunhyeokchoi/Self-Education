@@ -72,32 +72,32 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(SolutioNDir)..\..\external\glew-2.0.0\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\glew-2.0.0\lib\Release\$(Platform)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(SolutioNDir)..\..\external\glew-2.0.0\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\glew-2.0.0\lib\Release\$(Platform)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(SolutioNDir)..\..\external\glew-2.0.0\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\glew-2.0.0\lib\Release\$(Platform)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>$(SolutionDir)Sources;$(SourcePath)</SourcePath>
-    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\external\SDL2-2.0.5\include\;$(SolutionDir)..\..\external\SampleEngine\include\;$(SolutioNDir)..\..\external\glew-2.0.0\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\external\SampleEngine\lib\$(Configuration)_$(PlatformTarget)\;$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(SolutionDir)..\..\external\glew-2.0.0\lib\Release\$(Platform)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\..\output\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(SolutionDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
   </PropertyGroup>
@@ -114,10 +114,11 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86\SDL2.dll" "$(OutputPath)"</Command>
+      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)"
+copy /Y /B "$(SolutionDir)..\..\external\glew-2.0.0\bin\Release\$(Platform)" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,10 +133,11 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutputPath)"</Command>
+      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)"
+copy /Y /B "$(SolutionDir)..\..\external\glew-2.0.0\bin\Release\$(Platform)" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,10 +157,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x86\SDL2.dll" "$(OutputPath)"</Command>
+      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)"
+copy /Y /B "$(SolutionDir)..\..\external\glew-2.0.0\bin\Release\$(Platform)" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -177,10 +180,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutputPath)"</Command>
+      <Command>copy /Y /B "$(SolutionDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)"
+copy /Y /B "$(SolutionDir)..\..\external\glew-2.0.0\bin\Release\$(Platform)" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

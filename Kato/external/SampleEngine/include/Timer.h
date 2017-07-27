@@ -46,7 +46,7 @@ namespace KatoEngine
 
     private:
       //It's created only once in KatoEngine class's constructor.
-      friend Engine::Engine(const char* title, unsigned int scrwidth, unsigned int scrheight);
+      friend Engine::Engine(const char* title, unsigned int scrwidth, unsigned int scrheigh, std::string strexepath);
 
       //No one can create this, but only in KatoEngine's ctor.
       Timer() : pm_ispause(false), pm_isstarted(false) {}

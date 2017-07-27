@@ -19,16 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Kato_Sources\DebugTools.cpp" />
     <ClCompile Include="..\..\Kato_Sources\Engine.cpp" />
     <ClCompile Include="..\..\Kato_Sources\Input.cpp" />
     <ClCompile Include="..\..\Kato_Sources\Timer.cpp" />
-    <ClCompile Include="..\..\Kato_Sources\Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\External\SampleEngine\include\Engine.h" />
     <ClInclude Include="..\..\External\SampleEngine\include\Macro.h" />
     <ClInclude Include="..\..\External\SampleEngine\include\Timer.h" />
-    <ClInclude Include="..\..\External\SampleEngine\include\Vector3.h" />
+    <ClInclude Include="..\..\Kato_Sources\DebugTools.h" />
     <ClInclude Include="..\..\Kato_Sources\Input.h" />
     <ClInclude Include="..\..\Kato_Sources\TimerNew.h" />
   </ItemGroup>
@@ -85,8 +85,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(ProjectDir)..\..\external\glew-2.0.0\include\;$(ProjectDir)..\..\external\glm-0.9.8.4\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(ProjectDir)..\..\external\glew-2.0.0\lib\$(Platform)\;$(LibraryPath)</LibraryPath>
     <SourcePath>$(ProjectDir)..\..\Kato_Sources;$(SourcePath)</SourcePath>
     <TargetExt>.lib</TargetExt>
     <OutDir>$(ProjectDir)..\..\external\$(ProjectName)\lib\$(Configuration)_$(PlatformTarget)\</OutDir>
@@ -94,17 +94,17 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(ProjectDir)..\..\external\glew-2.0.0\include\;$(ProjectDir)..\..\external\glm-0.9.8.4\;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)..\..\Kato_Sources;$(SourcePath)</SourcePath>
-    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(ProjectDir)..\..\external\glew-2.0.0\lib\$(Platform)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)..\..\external\$(ProjectName)\lib\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(ProjectDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(ProjectDir)..\..\external\glew-2.0.0\include\;$(ProjectDir)..\..\external\glm-0.9.8.4\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(ProjectDir)..\..\external\glew-2.0.0\lib\$(Platform)\;$(LibraryPath)</LibraryPath>
     <SourcePath>$(ProjectDir)..\..\Kato_Sources;$(SourcePath)</SourcePath>
     <TargetExt>.lib</TargetExt>
     <OutDir>$(ProjectDir)..\..\external\$(ProjectName)\lib\$(Configuration)_$(PlatformTarget)\</OutDir>
@@ -112,9 +112,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\external\SDL2-2.0.5\include\;$(ProjectDir)..\..\external\$(ProjectName)\include\;$(ProjectDir)..\..\external\glew-2.0.0\include\;$(ProjectDir)..\..\external\glm-0.9.8.4\;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)..\..\Kato_Sources;$(SourcePath)</SourcePath>
-    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\..\external\SDL2-2.0.5\lib\$(PlatformTarget)\;$(ProjectDir)..\..\external\glew-2.0.0\lib\$(Platform)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)..\..\external\$(ProjectName)\lib\$(Configuration)_$(PlatformTarget)\</OutDir>
     <IntDir>$(ProjectDir)..\..\objs\$(ProjectName)\$(Configuration)_$(PlatformTarget)\</IntDir>
     <TargetExt>.lib</TargetExt>

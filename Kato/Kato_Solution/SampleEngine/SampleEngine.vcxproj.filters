@@ -21,10 +21,10 @@
     <ClCompile Include="..\..\Kato_Sources\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Kato_Sources\Vector3.cpp">
+    <ClCompile Include="..\..\Kato_Sources\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Kato_Sources\Input.cpp">
+    <ClCompile Include="..\..\Kato_Sources\DebugTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +38,13 @@
     <ClInclude Include="..\..\External\SampleEngine\include\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\External\SampleEngine\include\Vector3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Kato_Sources\TimerNew.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Kato_Sources\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Kato_Sources\DebugTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

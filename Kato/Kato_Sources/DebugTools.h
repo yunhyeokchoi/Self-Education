@@ -13,6 +13,19 @@
 #ifndef DEBUGTOOLS_H
 #define DEBUGTOOLS_H
 
+/*
+  http://support.microsoft.com/kb/166474
+  To speed the build process, Visual C++ and the Windows Headers provide the following new defines:
+
+  VC_EXTRALEAN
+  WIN32_LEAN_AND_MEAN
+
+  You can use them to reduce the size of the Win32 header files.
+*/
+#define WIN32_LEAN_AND_MEAN
+//DebugBreak();
+#include <Windows.h>
+
 //TODO: Thinking of whether should I wrap it around the defined macro scope;
 //inside "#if defined(DEBUG) | defined(_DEBUG)" and "#endif"
 namespace DebugTools

@@ -6,18 +6,6 @@
 */
 #include <sstream>
 
-/*
-	http://support.microsoft.com/kb/166474
-	To speed the build process, Visual C++ and the Windows Headers provide the following new defines:
-
-	VC_EXTRALEAN
-	WIN32_LEAN_AND_MEAN
-
-	You can use them to reduce the size of the Win32 header files.
-*/
-#define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
-
 bool DebugTools::Assert(int expression,
 						const char* outputMessage,
 						const char* functionName,
